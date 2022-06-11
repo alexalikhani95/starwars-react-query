@@ -14,7 +14,15 @@ const Planets = () => {
     <div>
       <h2>Planets</h2>
       {/* // status of query e.g loading */}
-      <p>{status}</p>
+      {status === "loading" && <div>Loading data...</div>}
+      {status === "error" && <div>Error fetching data</div>}
+      {status === "success" && (
+        <div>
+          {data.results.map((planet) => (
+            <div key={planet.name}>{planet.name}</div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
